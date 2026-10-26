@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Moyenne - Génie Électrique</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+        body { font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen py-10 px-4">
+    <div class="max-w-3xl mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden border border-slate-200">
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 text-white text-center">
+            <h1 class="text-2xl font-bold mb-1">Moyenne Générale</h1>
+            <p class="text-blue-100 text-sm">telecommunications</p>
+        </div>
+
+        <!-- Form Content -->
+        <div class="p-6 space-y-6">
+            <form id="calcForm" class="space-y-6">
+                
+                <!-- Section: Modules with TD & Exam -->
+                <div class="space-y-4">
+                    <h2 class="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+                        <span>📚</span> les modules(TD + Exam)
+                    </h2>
+                    
+                    <!-- Analyse -->
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                        <div>
+                            <span class="font-bold text-slate-800 block">Analyse</span>
+                            <span class="text-xs text-blue-600 font-semibold">Coef: 3 | (TD×0.4 + Exam×0.6)</span>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">Note TD (/20)</label>
+                            <input type="number" step="0.01" min="0" max="20" id="analyse_td" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00.00">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">Note Exam (/20)</label>
+                            <input type="number" step="0.01" min="0" max="20" id="analyse_ex" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00.00">
+                        </div>
+                    </div>
+
+                    <!-- Proba -->
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                        <div>
+                            <span class="font-bold text-slate-800 block">Proba</span>
+                            <span class="text-xs text-blue-600 font-semibold">Coef: 2 | (TD×0.4 + Exam×0.6)</span>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">Note TD (/20)</label>
+: <input type="number" step="0.01" min="0" max="20" id="proba_td" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00.00">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">Note Exam (/20)</label>
+                            <input type="number" step="0.01" min="0" max="20" id="proba_ex" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00.00">
+                        </div>
+                    </div>
+
+                    <!-- Eln -->
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                        <div>
+                            <span class="font-bold text-slate-800 block">Eln</span>
+                            <span class="text-xs text-blue-600 font-semibold">Coef: 2 | (TD×0.4 + Exam×0.6)</span>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">Note TD (/20)</label>
+                            <input type="number" step="0.01" min="0" max="20" id="eln_td" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00.00">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">Note Exam (/20)</label>
+                            <input type="number" step="0.01" min="0" max="20" id="eln_ex" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00.00">
+                        </div>
+                    </div>
+
+                    <!-- Elt -->
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                        <div>
+                            <span class="font-bold text-slate-800 block">Elt</span>
+                            <span class="text-xs text-blue-600 font-semibold">Coef: 2 | (TD×0.4 + Exam×0.6)</span>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">Note TD (/20)</label>
+                            <input type="number" step="0.01" min="0" max="20" id="elt_td" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00.00">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">Note Exam (/20)</label>
+                            <input type="number" step="0.01" min="0" max="20" id="elt_ex" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00.00">
+                        </div>
+                    </div>
+
+                    <!-- Python -->
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                        <div>
+                            <span class="font-bold text-slate-800 block">Python</span>
+                            <span class="text-xs text-blue-600 font-semibold">Coef: 2 | (TD×0.4 + Exam×0.6)</span>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">Note TD (/20)</label>
+                            <input type="number" step="0.01" min="0" max="20" id="python_td" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00.00">
+: </div>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">Note Exam (/20)</label>
+                            <input type="number" step="0.01" min="0" max="20" id="python_ex" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00.00">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: TP and Other Modules (Single Note) -->
+                <div class="space-y-4 pt-4">
+                    <h2 class="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+                        <span>⚡</span> tp and enling(Note Directe)
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Tp elt -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <span class="font-bold text-slate-800 block text-sm">Tp elt</span>
+                            <span class="text-xs text-blue-600 font-semibold mb-2 block">Coef: 0.5</span>
+                            <input type="number" step="0.01" min="0" max="20" id="tp_elt" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Note / 20">
+                        </div>
+
+                        <!-- Tp eln -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <span class="font-bold text-slate-800 block text-sm">Tp eln</span>
+                            <span class="text-xs text-blue-600 font-semibold mb-2 block">Coef: 0.5</span>
+                            <input type="number" step="0.01" min="0" max="20" id="tp_eln" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Note / 20">
+                        </div>
+
+                        <!-- Tp python -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <span class="font-bold text-slate-800 block text-sm">Tp python</span>
+                            <span class="text-xs text-blue-600 font-semibold mb-2 block">Coef: 1</span>
+                            <input type="number" step="0.01" min="0" max="20" id="tp_python" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Note / 20">
+                        </div>
+
+                        <!-- Énergie et environnement -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <span class="font-bold text-slate-800 block text-sm">Énergie et environnement</span>
+                            <span class="text-xs text-blue-600 font-semibold mb-2 block">Coef: 1</span>
+                            <input type="number" step="0.01" min="0" max="20" id="energie" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Note / 20">
+                        </div>
+
+                        <!-- Etat de l'art du génie électrique -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 md:col-span-2">
+                            <span class="font-bold text-slate-800 block text-sm">Etat de l'art du génie électrique</span>
+                            <span class="text-xs text-blue-600 font-semibold mb-2 block">Coef: 1</span>
+                            <input type="number" step="0.01" min="0" max="20" id="etat" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Note / 20">
+                </div>
+
+                <!-- Calculate Button -->
+                <div class="pt-2">
+                    <button type="button" onclick="calculateAverage()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold py-4 px-6 rounded-2xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition duration-200 cursor-pointer text-lg">
+                        (Calculer)
+                    </button>
+                </div>
+            </form>
+
+            <!-- Result Box -->
+            <div id="resultBox" class="hidden mt-6 bg-blue-50 border-2 border-blue-200 rounded-3xl p-6 text-center shadow-inner">
+                <h3 class="text-slate-600 font-bold mb-1">m3dl g3:</h3>
+                <div id="result" class="text-5xl font-extrabold text-blue-600 my-2">00.00</div>
+                <p id="resultStatus" class="text-base font-semibold mt-2"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function calculateAverage() {
+            const val = (id) => parseFloat(document.getElementById(id).value) || 0;
+
+            // Formulas: (TD * 0.4 + Exam * 0.6) * Coeff
+            const analyse = ((val('analyse_td') * 0.4) + (val('analyse_ex') * 0.6)) * 3;
+            const proba = ((val('proba_td') * 0.4) + (val('proba_ex') * 0.6)) * 2;
+            const eln = ((val('eln_td') * 0.4) + (val('eln_ex') * 0.6)) * 2;
+            const elt = ((val('elt_td') * 0.4) + (val('elt_ex') * 0.6)) * 2;
+            const python = ((val('python_td') * 0.4) + (val('python_ex') * 0.6)) * 2;
+
+            // TPs and other modules: Note * Coeff
+            const tp_elt = val('tp_elt') * 0.5;
+            const tp_eln = val('tp_eln') * 0.5;
+            const tp_python = val('tp_python') * 1;
+            const energie = val('energie') * 1;
+            const etat = val('etat') * 1;
+
+            const totalPoints = analyse + proba + eln + elt + python + tp_elt + tp_eln + tp_python + energie + etat;
+            const totalCoeffs = 3 + 2 + 2 + 2 + 2 + 0.5 + 0.5 + 1 + 1 + 1; // 14
+
+            const moyenne = totalPoints / totalCoeffs;
+
+            const resultBox = document.getElementById('resultBox');
+            const resultElem = document.getElementById('result');
+            const statusElem = document.getElementById('resultStatus');
+
+            resultBox.classList.remove('hidden');
+            resultElem.innerText = moyenne.toFixed(2);
+
+            if (moyenne >= 10) {
+                statusElem.innerText = "mbrooooooook";
+                statusElem.className = "text-base font-bold mt-2 text-green-600";
+            } else {
+                statusElem.innerText = "ayaaaah 3la l7abssss";
+                statusElem.className = "text-base font-bold mt-2 text-amber-600";
+            }
+            
+            // Scroll smoothly to result
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
